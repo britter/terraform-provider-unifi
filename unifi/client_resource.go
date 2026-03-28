@@ -430,10 +430,12 @@ func (r *clientResource) Read(
 		return
 	}
 
-	// Get identity (MAC address)
+	// Get identity (MAC address), falling back to state MAC if not available.
+	// We capture this before clientToModel runs, because clientToModel may set
+	// state.MAC to null if the API returns an empty MAC — and we need a reliable
+	// MAC to set the identity at the end of Read.
 	id := clientIdentityModel{}
 	if d := req.Identity.Get(ctx, &id); d.HasError() || id.MAC.IsNull() {
-		// Fall back to state MAC if identity not available
 		id.MAC = state.MAC
 	}
 
@@ -465,7 +467,10 @@ func (r *clientResource) Read(
 		client, err = r.client.GetClient(ctx, site, state.ID.ValueString())
 		if err != nil {
 			if _, ok := err.(*unifi.NotFoundError); ok {
-				// Client was deleted externally - remove from state
+				// Client was deleted externally - remove from state.
+				// Identity must still be set before returning, because the framework
+				// validates that identity is non-null after every successful (no-error) Read.
+				resp.Diagnostics.Append(resp.Identity.Set(ctx, &id)...)
 				resp.State.RemoveResource(ctx)
 				return
 			}
@@ -551,10 +556,6 @@ func (r *clientResource) Read(
 	resp.Diagnostics.Append(r.clientToModel(ctx, client, &state, site)...)
 	if resp.Diagnostics.HasError() {
 		return
-	}
-
-	if id.MAC.IsNull() || id.MAC.IsUnknown() {
-		id.MAC = state.MAC
 	}
 
 	if state.AllowExisting.IsNull() || state.AllowExisting.IsUnknown() {
