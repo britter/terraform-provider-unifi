@@ -1,0 +1,328 @@
+home-lab/network on  main [$!⇡] via 💠 default via ❄️  impure (nix-shell-env)
+❯ tofu plan
+unifi_client.srv_prod_3: Refreshing state... [id=695a61328ea6ae4ba05b75ce]
+unifi_client.srv_prod_2_new: Refreshing state... [id=6983b233e9998528977527d1]
+unifi_client.srv_prod_3_new: Refreshing state... [id=69863a38e999852897757efb]
+unifi_client.pve: Refreshing state... [id=697e16d6e999852897748635]
+unifi_client.homeassistant: Refreshing state... [id=695e0c298ea6ae4ba05ba182]
+unifi_client.directions: Refreshing state... [id=695d22c98ea6ae4ba05b8d10]
+unifi_client.srv_test_2: Refreshing state... [id=69bc0cbab4d13638604bc077]
+unifi_client.srv_prod_2: Refreshing state... [id=695a61328ea6ae4ba05b75cc]
+unifi_dns_record.srv_prod_2_new_wildcard: Refreshing state... [id=69ab24e7157f5c02873d93da]
+unifi_dns_record.srv_prod_2: Refreshing state... [id=69bc4c8cb84e03db685a202f]
+unifi_dns_record.srv_prod_2_wildcard: Refreshing state... [id=69bc4c8cb84e03db685a2030]
+unifi_dns_record.srv_prod_2_new: Refreshing state... [id=69ab23c1157f5c02873d93af]
+unifi_dns_record.srv_test_2: Refreshing state... [id=69bc4dcfb84e03db685a205c]
+unifi_dns_record.srv_test_2_wildcard: Refreshing state... [id=69bc4dcfb84e03db685a205f]
+unifi_dns_record.directions: Refreshing state... [id=69bc4eccb84e03db685a2086]
+unifi_dns_record.srv_prod_3_wildcard: Refreshing state... [id=69bc4c8cb84e03db685a2034]
+unifi_dns_record.directions_wildcard: Refreshing state... [id=69bc4eccb84e03db685a2088]
+unifi_dns_record.srv_prod_3_new: Refreshing state... [id=69ab23c1157f5c02873d93ac]
+unifi_dns_record.srv_prod_3_new_wildcard: Refreshing state... [id=69ab24e7157f5c02873d93d7]
+unifi_dns_record.srv_prod_3: Refreshing state... [id=69bc4c8cb84e03db685a2036]
+
+OpenTofu used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+OpenTofu will perform the following actions:
+
+  # unifi_client.directions will be created
+  + resource "unifi_client" "directions" {
+      + allow_existing         = true
+      + blocked                = false
+      + display_name           = (known after apply)
+      + fixed_ap_mac           = (known after apply)
+      + fixed_ip               = "192.168.5.6"
+      + groups                 = (known after apply)
+      + hostname               = (known after apply)
+      + id                     = (known after apply)
+      + local_dns_record       = (known after apply)
+      + mac                    = "d8:3a:dd:72:2a:26"
+      + name                   = "directions"
+      + network_id             = (known after apply)
+      + note                   = (known after apply)
+      + qos_rate               = (known after apply)
+      + site                   = (known after apply)
+      + skip_forget_on_destroy = false
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so OpenTofu can't guarantee to take exactly these actions if you run "tofu apply"
+now.
+
+home-lab/network on  main [$!⇡] via 💠 default via ❄️  impure (nix-shell-env)
+❯ v
+
+home-lab/network on  main [$!⇡] via 💠 default via ❄️  impure (nix-shell-env) took 8s
+❯ tofu apply
+unifi_client.directions: Refreshing state... [id=695d22c98ea6ae4ba05b8d10]
+unifi_client.srv_prod_2_new: Refreshing state... [id=6983b233e9998528977527d1]
+unifi_client.pve: Refreshing state... [id=697e16d6e999852897748635]
+unifi_client.srv_prod_3: Refreshing state... [id=695a61328ea6ae4ba05b75ce]
+unifi_client.srv_test_2: Refreshing state... [id=69bc0cbab4d13638604bc077]
+unifi_client.srv_prod_2: Refreshing state... [id=695a61328ea6ae4ba05b75cc]
+unifi_client.srv_prod_3_new: Refreshing state... [id=69863a38e999852897757efb]
+unifi_client.homeassistant: Refreshing state... [id=695e0c298ea6ae4ba05ba182]
+unifi_dns_record.directions: Refreshing state... [id=69bc4eccb84e03db685a2086]
+unifi_dns_record.directions_wildcard: Refreshing state... [id=69bc4eccb84e03db685a2088]
+unifi_dns_record.srv_test_2_wildcard: Refreshing state... [id=69bc4dcfb84e03db685a205f]
+unifi_dns_record.srv_test_2: Refreshing state... [id=69bc4dcfb84e03db685a205c]
+unifi_dns_record.srv_prod_2_new_wildcard: Refreshing state... [id=69ab24e7157f5c02873d93da]
+unifi_dns_record.srv_prod_3_new: Refreshing state... [id=69ab23c1157f5c02873d93ac]
+unifi_dns_record.srv_prod_2_new: Refreshing state... [id=69ab23c1157f5c02873d93af]
+unifi_dns_record.srv_prod_2_wildcard: Refreshing state... [id=69bc4c8cb84e03db685a2030]
+unifi_dns_record.srv_prod_2: Refreshing state... [id=69bc4c8cb84e03db685a202f]
+unifi_dns_record.srv_prod_3_wildcard: Refreshing state... [id=69bc4c8cb84e03db685a2034]
+unifi_dns_record.srv_prod_3_new_wildcard: Refreshing state... [id=69ab24e7157f5c02873d93d7]
+unifi_dns_record.srv_prod_3: Refreshing state... [id=69bc4c8cb84e03db685a2036]
+
+OpenTofu used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+OpenTofu will perform the following actions:
+
+  # unifi_client.directions will be created
+  + resource "unifi_client" "directions" {
+      + allow_existing         = true
+      + blocked                = false
+      + display_name           = (known after apply)
+      + fixed_ap_mac           = (known after apply)
+      + fixed_ip               = "192.168.5.6"
+      + groups                 = (known after apply)
+      + hostname               = (known after apply)
+      + id                     = (known after apply)
+      + local_dns_record       = (known after apply)
+      + mac                    = "d8:3a:dd:72:2a:26"
+      + name                   = "directions"
+      + network_id             = (known after apply)
+      + note                   = (known after apply)
+      + qos_rate               = (known after apply)
+      + site                   = (known after apply)
+      + skip_forget_on_destroy = false
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  OpenTofu will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+unifi_client.directions: Creating...
+╷
+│ Error: Provider produced inconsistent result after apply
+│
+│ When applying changes to unifi_client.directions, provider "provider[\"registry.opentofu.org/ubiquiti-community/unifi\"]" produced an
+│ unexpected new value: .blocked: was cty.False, but now null.
+│
+│ This is a bug in the provider, which should be reported in the provider's own issue tracker.
+╵
+╷
+│ Error: Provider produced inconsistent result after apply
+│
+│ When applying changes to unifi_client.directions, provider "provider[\"registry.opentofu.org/ubiquiti-community/unifi\"]" produced an
+│ unexpected new value: .fixed_ip: was cty.StringVal("192.168.5.6"), but now null.
+│
+│ This is a bug in the provider, which should be reported in the provider's own issue tracker.
+╵
+╷
+│ Error: Provider produced inconsistent result after apply
+│
+│ When applying changes to unifi_client.directions, provider "provider[\"registry.opentofu.org/ubiquiti-community/unifi\"]" produced an
+│ unexpected new value: .name: was cty.StringVal("directions"), but now null.
+│
+│ This is a bug in the provider, which should be reported in the provider's own issue tracker.
+╵
+
+home-lab/network on  main [$!⇡] via 💠 default via ❄️  impure (nix-shell-env) took 3s
+❯ tofu plan
+unifi_client.srv_test_2: Refreshing state... [id=69bc0cbab4d13638604bc077]
+unifi_client.srv_prod_3: Refreshing state... [id=695a61328ea6ae4ba05b75ce]
+unifi_client.directions: Refreshing state... [id=69c7e626b84e03db685b78ab]
+unifi_client.srv_prod_2_new: Refreshing state... [id=6983b233e9998528977527d1]
+unifi_client.srv_prod_2: Refreshing state... [id=695a61328ea6ae4ba05b75cc]
+unifi_client.homeassistant: Refreshing state... [id=695e0c298ea6ae4ba05ba182]
+unifi_client.pve: Refreshing state... [id=697e16d6e999852897748635]
+unifi_client.srv_prod_3_new: Refreshing state... [id=69863a38e999852897757efb]
+unifi_dns_record.srv_prod_3: Refreshing state... [id=69bc4c8cb84e03db685a2036]
+unifi_dns_record.srv_prod_3_new_wildcard: Refreshing state... [id=69ab24e7157f5c02873d93d7]
+unifi_dns_record.srv_prod_3_wildcard: Refreshing state... [id=69bc4c8cb84e03db685a2034]
+unifi_dns_record.srv_prod_3_new: Refreshing state... [id=69ab23c1157f5c02873d93ac]
+unifi_dns_record.srv_prod_2_new_wildcard: Refreshing state... [id=69ab24e7157f5c02873d93da]
+unifi_dns_record.srv_prod_2: Refreshing state... [id=69bc4c8cb84e03db685a202f]
+unifi_dns_record.srv_prod_2_wildcard: Refreshing state... [id=69bc4c8cb84e03db685a2030]
+unifi_dns_record.srv_prod_2_new: Refreshing state... [id=69ab23c1157f5c02873d93af]
+unifi_dns_record.srv_test_2_wildcard: Refreshing state... [id=69bc4dcfb84e03db685a205f]
+unifi_dns_record.srv_test_2: Refreshing state... [id=69bc4dcfb84e03db685a205c]
+unifi_dns_record.directions_wildcard: Refreshing state... [id=69bc4eccb84e03db685a2088]
+unifi_dns_record.directions: Refreshing state... [id=69bc4eccb84e03db685a2086]
+
+OpenTofu used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+-/+ destroy and then create replacement
+
+OpenTofu will perform the following actions:
+
+  # unifi_client.directions is tainted, so it must be replaced
+-/+ resource "unifi_client" "directions" {
+      + blocked                = false
+      + display_name           = (known after apply)
+      + fixed_ap_mac           = (known after apply)
+      + fixed_ip               = "192.168.5.6"
+      + groups                 = (known after apply)
+      ~ hostname               = "directions" -> (known after apply)
+      ~ id                     = "69c7e626b84e03db685b78ab" -> (known after apply)
+      + local_dns_record       = (known after apply)
+      + name                   = "directions"
+      + network_id             = (known after apply)
+      + note                   = (known after apply)
+      + qos_rate               = (known after apply)
+      ~ site                   = "default" -> (known after apply)
+        # (3 unchanged attributes hidden)
+    }
+
+Plan: 1 to add, 0 to change, 1 to destroy.
+
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so OpenTofu can't guarantee to take exactly these actions if you run "tofu apply"
+now.
+
+home-lab/network on  main [$!⇡] via 💠 default via ❄️  impure (nix-shell-env)
+❯ tofu apply
+unifi_client.directions: Refreshing state... [id=69c7e626b84e03db685b78ab]
+unifi_client.pve: Refreshing state... [id=697e16d6e999852897748635]
+unifi_client.srv_prod_3: Refreshing state... [id=695a61328ea6ae4ba05b75ce]
+unifi_client.srv_test_2: Refreshing state... [id=69bc0cbab4d13638604bc077]
+unifi_client.srv_prod_2_new: Refreshing state... [id=6983b233e9998528977527d1]
+unifi_client.homeassistant: Refreshing state... [id=695e0c298ea6ae4ba05ba182]
+unifi_client.srv_prod_2: Refreshing state... [id=695a61328ea6ae4ba05b75cc]
+unifi_client.srv_prod_3_new: Refreshing state... [id=69863a38e999852897757efb]
+unifi_dns_record.srv_prod_2: Refreshing state... [id=69bc4c8cb84e03db685a202f]
+unifi_dns_record.directions_wildcard: Refreshing state... [id=69bc4eccb84e03db685a2088]
+unifi_dns_record.srv_prod_3: Refreshing state... [id=69bc4c8cb84e03db685a2036]
+unifi_dns_record.srv_prod_2_new: Refreshing state... [id=69ab23c1157f5c02873d93af]
+unifi_dns_record.srv_test_2_wildcard: Refreshing state... [id=69bc4dcfb84e03db685a205f]
+unifi_dns_record.directions: Refreshing state... [id=69bc4eccb84e03db685a2086]
+unifi_dns_record.srv_prod_2_wildcard: Refreshing state... [id=69bc4c8cb84e03db685a2030]
+unifi_dns_record.srv_prod_2_new_wildcard: Refreshing state... [id=69ab24e7157f5c02873d93da]
+unifi_dns_record.srv_prod_3_wildcard: Refreshing state... [id=69bc4c8cb84e03db685a2034]
+unifi_dns_record.srv_prod_3_new: Refreshing state... [id=69ab23c1157f5c02873d93ac]
+unifi_dns_record.srv_test_2: Refreshing state... [id=69bc4dcfb84e03db685a205c]
+unifi_dns_record.srv_prod_3_new_wildcard: Refreshing state... [id=69ab24e7157f5c02873d93d7]
+
+OpenTofu used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+-/+ destroy and then create replacement
+
+OpenTofu will perform the following actions:
+
+  # unifi_client.directions is tainted, so it must be replaced
+-/+ resource "unifi_client" "directions" {
+      + blocked                = false
+      + display_name           = (known after apply)
+      + fixed_ap_mac           = (known after apply)
+      + fixed_ip               = "192.168.5.6"
+      + groups                 = (known after apply)
+      ~ hostname               = "directions" -> (known after apply)
+      ~ id                     = "69c7e626b84e03db685b78ab" -> (known after apply)
+      + local_dns_record       = (known after apply)
+      + name                   = "directions"
+      + network_id             = (known after apply)
+      + note                   = (known after apply)
+      + qos_rate               = (known after apply)
+      ~ site                   = "default" -> (known after apply)
+        # (3 unchanged attributes hidden)
+    }
+
+Plan: 1 to add, 0 to change, 1 to destroy.
+
+Do you want to perform these actions?
+  OpenTofu will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+unifi_client.directions: Destroying... [id=69c7e626b84e03db685b78ab]
+unifi_client.directions: Destruction complete after 2s
+unifi_client.directions: Creating...
+╷
+│ Error: Provider produced inconsistent result after apply
+│
+│ When applying changes to unifi_client.directions, provider "provider[\"registry.opentofu.org/ubiquiti-community/unifi\"]" produced an
+│ unexpected new value: .name: was cty.StringVal("directions"), but now null.
+│
+│ This is a bug in the provider, which should be reported in the provider's own issue tracker.
+╵
+╷
+│ Error: Provider produced inconsistent result after apply
+│
+│ When applying changes to unifi_client.directions, provider "provider[\"registry.opentofu.org/ubiquiti-community/unifi\"]" produced an
+│ unexpected new value: .blocked: was cty.False, but now null.
+│
+│ This is a bug in the provider, which should be reported in the provider's own issue tracker.
+╵
+╷
+│ Error: Provider produced inconsistent result after apply
+│
+│ When applying changes to unifi_client.directions, provider "provider[\"registry.opentofu.org/ubiquiti-community/unifi\"]" produced an
+│ unexpected new value: .fixed_ip: was cty.StringVal("192.168.5.6"), but now null.
+│
+│ This is a bug in the provider, which should be reported in the provider's own issue tracker.
+╵
+
+home-lab/network on  main [$!⇡] via 💠 default via ❄️  impure (nix-shell-env) took 3s
+❯ tofu plan
+unifi_client.srv_test_2: Refreshing state... [id=69bc0cbab4d13638604bc077]
+unifi_client.srv_prod_3_new: Refreshing state... [id=69863a38e999852897757efb]
+unifi_client.directions: Refreshing state... [id=69ca4715b84e03db685bba6e]
+unifi_client.srv_prod_2: Refreshing state... [id=695a61328ea6ae4ba05b75cc]
+unifi_client.srv_prod_2_new: Refreshing state... [id=6983b233e9998528977527d1]
+unifi_client.srv_prod_3: Refreshing state... [id=695a61328ea6ae4ba05b75ce]
+unifi_client.pve: Refreshing state... [id=697e16d6e999852897748635]
+unifi_client.homeassistant: Refreshing state... [id=695e0c298ea6ae4ba05ba182]
+unifi_dns_record.srv_test_2: Refreshing state... [id=69bc4dcfb84e03db685a205c]
+unifi_dns_record.srv_test_2_wildcard: Refreshing state... [id=69bc4dcfb84e03db685a205f]
+unifi_dns_record.directions_wildcard: Refreshing state... [id=69bc4eccb84e03db685a2088]
+unifi_dns_record.directions: Refreshing state... [id=69bc4eccb84e03db685a2086]
+unifi_dns_record.srv_prod_2: Refreshing state... [id=69bc4c8cb84e03db685a202f]
+unifi_dns_record.srv_prod_2_new_wildcard: Refreshing state... [id=69ab24e7157f5c02873d93da]
+unifi_dns_record.srv_prod_2_wildcard: Refreshing state... [id=69bc4c8cb84e03db685a2030]
+unifi_dns_record.srv_prod_2_new: Refreshing state... [id=69ab23c1157f5c02873d93af]
+unifi_dns_record.srv_prod_3_wildcard: Refreshing state... [id=69bc4c8cb84e03db685a2034]
+unifi_dns_record.srv_prod_3: Refreshing state... [id=69bc4c8cb84e03db685a2036]
+unifi_dns_record.srv_prod_3_new_wildcard: Refreshing state... [id=69ab24e7157f5c02873d93d7]
+unifi_dns_record.srv_prod_3_new: Refreshing state... [id=69ab23c1157f5c02873d93ac]
+
+OpenTofu used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+-/+ destroy and then create replacement
+
+OpenTofu will perform the following actions:
+
+  # unifi_client.directions is tainted, so it must be replaced
+-/+ resource "unifi_client" "directions" {
+      + blocked                = false
+      + display_name           = (known after apply)
+      + fixed_ap_mac           = (known after apply)
+      + fixed_ip               = "192.168.5.6"
+      + groups                 = (known after apply)
+      ~ hostname               = "directions" -> (known after apply)
+      ~ id                     = "69ca4715b84e03db685bba6e" -> (known after apply)
+      + local_dns_record       = (known after apply)
+      + name                   = "directions"
+      + network_id             = (known after apply)
+      + note                   = (known after apply)
+      + qos_rate               = (known after apply)
+      ~ site                   = "default" -> (known after apply)
+        # (3 unchanged attributes hidden)
+    }
+
+Plan: 1 to add, 0 to change, 1 to destroy.
+
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so OpenTofu can't guarantee to take exactly these actions if you run "tofu apply"
+now.
+
