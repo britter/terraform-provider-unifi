@@ -396,7 +396,7 @@ func (r *clientResource) Create(
 		// preserve UniFi internal fields, then overlay the plan values.
 		mergedClient := r.mergeClient(pclient, client)
 		tflog.Info(ctx, "Merged Client: ")
-		updatedClient, err := r.client.UpdateClient(ctx, site, mergedClient)
+		_, err = r.client.UpdateClient(ctx, site, mergedClient)
 		if err != nil {
 			resp.Diagnostics.AddError(
 				"Error Updating Existing Client",
@@ -404,7 +404,16 @@ func (r *clientResource) Create(
 			)
 			return
 		}
-		createdClient = updatedClient
+		// Re-fetch the client after update, because the UpdateClient response
+		// may omit writable fields (blocked, name, fixed_ip, etc.).
+		createdClient, err = r.client.GetClient(ctx, site, pclient.ID)
+		if err != nil {
+			resp.Diagnostics.AddError(
+				"Error Reading Client After Update",
+				"Could not read client with ID "+pclient.ID+": "+err.Error(),
+			)
+			return
+		}
 	}
 
 	// Convert response back to model
