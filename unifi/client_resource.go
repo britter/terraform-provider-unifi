@@ -391,8 +391,10 @@ func (r *clientResource) Create(
 			)
 		}
 
-		// Implement merge pattern for existing client
-		mergedClient := r.mergeClient(existingClient, pclient)
+		// Implement merge pattern for existing client:
+		// start from the full existing client (pclient, fetched by ID) to
+		// preserve UniFi internal fields, then overlay the plan values.
+		mergedClient := r.mergeClient(pclient, client)
 		tflog.Info(ctx, "Merged Client: ")
 		updatedClient, err := r.client.UpdateClient(ctx, site, mergedClient)
 		if err != nil {
