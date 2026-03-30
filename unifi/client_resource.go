@@ -395,7 +395,6 @@ func (r *clientResource) Create(
 		// start from the full existing client (pclient, fetched by ID) to
 		// preserve UniFi internal fields, then overlay the plan values.
 		mergedClient := r.mergeClient(pclient, client)
-		tflog.Info(ctx, "Merged Client: ")
 		_, err = r.client.UpdateClient(ctx, site, mergedClient)
 		if err != nil {
 			resp.Diagnostics.AddError(
@@ -411,6 +410,17 @@ func (r *clientResource) Create(
 			resp.Diagnostics.AddError(
 				"Error Reading Client After Update",
 				"Could not read client with ID "+pclient.ID+": "+err.Error(),
+			)
+			return
+		}
+	} else {
+		// Re-fetch after a successful CreateClient, because the POST response
+		// may omit writable fields (name, fixed_ip, blocked, etc.).
+		createdClient, err = r.client.GetClient(ctx, site, createdClient.ID)
+		if err != nil {
+			resp.Diagnostics.AddError(
+				"Error Reading Client After Create",
+				"Could not read client with ID "+createdClient.ID+": "+err.Error(),
 			)
 			return
 		}
@@ -983,7 +993,13 @@ func (r *clientResource) clientToModel(
 		model.Groups = types.ListNull(types.StringType)
 	}
 
-	model.Blocked = types.BoolPointerValue(client.Blocked)
+	// The UniFi API omits "blocked" when false (omitempty), so a nil pointer
+	// means the client is not blocked. Map nil → false to avoid state drift.
+	if client.Blocked != nil {
+		model.Blocked = types.BoolValue(*client.Blocked)
+	} else {
+		model.Blocked = types.BoolValue(false)
+	}
 	model.LocalDNSRecord = util.StringValueOrNull(client.LocalDNSRecord)
 
 	// Computed attributes
